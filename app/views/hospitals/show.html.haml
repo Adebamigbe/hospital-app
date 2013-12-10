@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @hospital.name
+%p
+  %b Address:
+  = @hospital.address
+%p
+  %b Telephone:
+  = @hospital.telephone
+
+= link_to 'Edit', edit_hospital_path(@hospital)
+\|
+= link_to 'Back', hospitals_path
+
+
+
+/ = image_tag "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lon}&types=hospital|health|doctor&sensor=false&rankby=distance&key=AIzaSyDG1sETP6oYhAU4GFYZO8kZRH28KiffPlU"
+/ %h3 Nearby Hospitals
+/ %ul
+/   - for location in @location.nearbys(10)
+/     %li
+/       = link_to location.address, location
+/       (#{location.distance.round(2)} miles)

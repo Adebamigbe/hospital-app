@@ -1,0 +1,8 @@
+.navbar.navbar-default
+  .navbar-brand.strong= link_to "Hospital locator", root_path
+  %ul.nav.navbar-nav.navbar-left
+    %li= link_to "Hospitals", hospitals_path
+  %form.navbar-form.navbar-left
+    .form-group
+      %input.form-control{placeholder: "Search", type: "text", value: params[:q], :name => "q"}/
+    %button.btn.btn-default{type: "submit"} Submit

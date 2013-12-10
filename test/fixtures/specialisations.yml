@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  spec_cat_id: 1
+  specialisation_id: 1
+  name: MyString
+
+two:
+  spec_cat_id: 1
+  specialisation_id: 1
+  name: MyString

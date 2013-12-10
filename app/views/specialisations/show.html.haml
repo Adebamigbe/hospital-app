@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Spec cat:
+  = @specialisation.spec_cat_id
+%p
+  %b Specialisation:
+  = @specialisation.specialisation_id
+%p
+  %b Name:
+  = @specialisation.name
+
+= link_to 'Edit', edit_specialisation_path(@specialisation)
+\|
+= link_to 'Back', specialisations_path

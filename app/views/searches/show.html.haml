@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Search history:
+  = @search.search_history
+%p
+  %b Lat:
+  = @search.lat
+%p
+  %b Lng:
+  = @search.lng
+%p
+  %b Address:
+  = @search.address
+
+= link_to 'Edit', edit_search_path(@search)
+\|
+= link_to 'Back', searches_path

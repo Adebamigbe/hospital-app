@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  search_history: MyString
+  lat: 1
+  lng: 1
+  address: MyText
+
+two:
+  search_history: MyString
+  lat: 1
+  lng: 1
+  address: MyText

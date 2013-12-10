@@ -1,0 +1,23 @@
+%h1 Listing specialisations
+
+%table
+  %tr
+    %th Spec cat
+    %th Specialisation
+    %th Name
+    %th
+    %th
+    %th
+
+  - @specialisations.each do |specialisation|
+    %tr
+      %td= specialisation.spec_cat_id
+      %td= specialisation.specialisation_id
+      %td= specialisation.name
+      %td= link_to 'Show', specialisation
+      %td= link_to 'Edit', edit_specialisation_path(specialisation)
+      %td= link_to 'Destroy', specialisation, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Specialisation', new_specialisation_path
