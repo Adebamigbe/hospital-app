@@ -2,7 +2,7 @@
   .navbar-brand.strong= link_to "Hospital locator", root_path
   %ul.nav.navbar-nav.navbar-left
     %li= link_to "Hospitals", hospitals_path
-  %form.navbar-form.navbar-left
+  = form_tag("/hospitals/search", id: "search-form", class: "navbar-form navbar-left") do
     .form-group
-      %input.form-control{placeholder: "Search", type: "text", value: params[:q], :name => "q"}/
-    %button.btn.btn-default{type: "submit"} Submit
+      = text_field_tag :search, nil, class: "form-control", placeholder: :Search
+    = submit_tag :Search, class: "btn btn-default"
