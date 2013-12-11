@@ -11,7 +11,9 @@ HospitalApp::Application.routes.draw do
   resources :specialisations
 
 
+  post "/hospitals/search", to: "hospitals#search"
   resources :hospitals
+
   resources :users
 
 

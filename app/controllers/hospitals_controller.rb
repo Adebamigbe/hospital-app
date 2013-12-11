@@ -80,9 +80,25 @@ class HospitalsController < ApplicationController
     end
   end
 
+  # POST /hospitals/search
   def search
-    @hospitals = Hospital.search(params[:search])
+    geo = Geocoder.search(params[:search]).first
+    location = geo.geometry["location"]
+    lat = location["lat"]
+    lng = location["lng"]
 
+    results = SearchHelper.search(lat, lng)
+    results.each do |hospital_result|
+      hospital = Hospital.new
+      hospital.name = hospital_result["name"]
+      hospital.api_id = hospital_result["id"]
+      hospital.address = hospital_result["vicinity"]
+      hospital.lat = hospital_result["geometry"]["location"]["lat"]
+      hospital.lng = hospital_result["geometry"]["location"]["lng"]
+      hospital.save
+    end
+
+    render json: results
   end
 
 end

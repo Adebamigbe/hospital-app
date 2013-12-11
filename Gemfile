@@ -28,6 +28,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'httparty'
 
 
 # To use ActiveModel has_secure_password
