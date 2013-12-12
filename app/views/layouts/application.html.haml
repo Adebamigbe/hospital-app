@@ -4,9 +4,8 @@
     %title Hospital locator
     = stylesheet_link_tag "application", :media => "all"
     %link{href: "http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css", rel: "stylesheet"}/
-    = javascript_include_tag "application"
     %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBoczuh9EiBa-u4TaQKQHV79Fu2D6Pl6X0&sensor=false"}
-    / %script{src: "http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", type: "text/javascript"}
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     = render "navbar"

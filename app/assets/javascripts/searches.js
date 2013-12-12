@@ -11,8 +11,6 @@ $(function() {
         search: searchQuery
       },
       success: function(results) {
-        console.log(results);
-
         //create empty LatLngBounds object
         var bounds = new google.maps.LatLngBounds();
 
@@ -26,11 +24,32 @@ $(function() {
           var marker = new google.maps.Marker({
               position: latlng,
               map: window.map,
-              title: result.name
+              title: result.name,
+              vicinity: result.vicinity
           });
 
           //extend the bounds to include each marker's position
           bounds.extend(marker.position);
+
+          var infowindow = new google.maps.InfoWindow({
+            height: 500
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.close();
+            infowindow.open(window.map, this);
+
+            var $infowindowContent = $("<div style='height: 500px;'>");
+            var $elementName = $("<p></p>");
+            $elementName.html("<b>" + this.title + "</b>");
+            var $elementVicinity = $("<p>");
+            $elementVicinity.html(this.vicinity);
+            $infowindowContent.append($elementName).append($elementVicinity);
+
+            infowindow.setContent($infowindowContent.html());
+
+            map.setCenter(this.getPosition());
+          });
         }
 
         map.fitBounds(bounds);
