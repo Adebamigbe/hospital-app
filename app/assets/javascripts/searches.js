@@ -25,7 +25,8 @@ $(function() {
               position: latlng,
               map: window.map,
               title: result.name,
-              vicinity: result.vicinity
+              vicinity: result.vicinity,
+              app_id: result.app_id
           });
 
           //extend the bounds to include each marker's position
@@ -41,7 +42,7 @@ $(function() {
 
             var $infowindowContent = $("<div style='height: 500px;'>");
             var $elementName = $("<p></p>");
-            $elementName.html("<b>" + this.title + "</b>");
+            $elementName.html("<a href='/hospitals/" + this.app_id + "'><b>" + this.title + "</b></a>");
             var $elementVicinity = $("<p>");
             $elementVicinity.html(this.vicinity);
             $infowindowContent.append($elementName).append($elementVicinity);

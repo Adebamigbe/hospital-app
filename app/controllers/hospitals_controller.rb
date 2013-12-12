@@ -94,6 +94,8 @@ class HospitalsController < ApplicationController
       hospital.lat = hospital_result["geometry"]["location"]["lat"]
       hospital.lng = hospital_result["geometry"]["location"]["lng"]
       hospital.save
+
+      hospital_result["app_id"] = hospital.id
     end
 
     render json: results
