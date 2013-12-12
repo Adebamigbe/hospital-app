@@ -77,10 +77,13 @@ class HospitalsController < ApplicationController
 
   # POST /hospitals/search
   def search
-    geo = Geocoder.search(params[:search]).first
+    address = params[:search]
+    geo = Geocoder.search(address).first
     location = geo.geometry["location"]
     lat = location["lat"]
     lng = location["lng"]
+
+    search = Search.create(address: address, lat: lat, lng: lng)
 
     results = SearchHelper.search(lat, lng)
     results.each do |hospital_result|
