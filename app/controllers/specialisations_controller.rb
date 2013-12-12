@@ -2,12 +2,6 @@ class SpecialisationsController < ApplicationController
   # GET /specialisations
   # GET /specialisations.json
   def index
-    @specialisations = Specialisation.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @specialisations }
-    end
   end
 
   # GET /specialisations/1

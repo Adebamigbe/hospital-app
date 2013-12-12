@@ -2,11 +2,19 @@ class HospitalSuggestionsController < ApplicationController
   # GET /hospital_suggestions
   # GET /hospital_suggestions.json
   def index
-    @hospital_suggestions = HospitalSuggestion.all
+    hospital = Hospital.find(params[:hospital_id])
+    hospital_specialisations = hospital.specialisations
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @hospital_suggestions }
+    specialisation_categories = SpecialisationCategory.all
+    @specialisation_categories_hash = {}
+
+    specialisation_categories.each do |specialisation_category|
+      @specialisation_categories_hash[specialisation_category] = []
+
+      specialisation_category.specialisations.each do |specialisation|
+        specialisation.show_checked = true if hospital_specialisations.include? specialisation
+        @specialisation_categories_hash[specialisation_category] << specialisation
+      end
     end
   end
 
@@ -40,17 +48,14 @@ class HospitalSuggestionsController < ApplicationController
   # POST /hospital_suggestions
   # POST /hospital_suggestions.json
   def create
-    @hospital_suggestion = HospitalSuggestion.new(params[:hospital_suggestion])
+    hospital = Hospital.find(params[:hospital_id])
 
-    respond_to do |format|
-      if @hospital_suggestion.save
-        format.html { redirect_to @hospital_suggestion, notice: 'Hospital suggestion was successfully created.' }
-        format.json { render json: @hospital_suggestion, status: :created, location: @hospital_suggestion }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @hospital_suggestion.errors, status: :unprocessable_entity }
-      end
+    params[:specialisations_id].each do |specialisation_id|
+      specialisation = Specialisation.find(specialisation_id)
+      hospital.specialisations << specialisation unless hospital.specialisations.include? specialisation
     end
+
+    redirect_to(hospital)
   end
 
   # PUT /hospital_suggestions/1

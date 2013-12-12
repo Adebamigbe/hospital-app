@@ -1,21 +1,17 @@
 HospitalApp::Application.routes.draw do
-  resources :specialisation_categories
-
+  resources :specialisation_categories do
+    resources :specialisations
+  end
 
   resources :searches
 
-
-  resources :hospital_suggestions
-
-
-  resources :specialisations
-
-
   post "/hospitals/search", to: "hospitals#search"
-  resources :hospitals
+
+  resources :hospitals do
+    resources :hospital_suggestions
+  end
 
   resources :users
-
 
   root to: "hospitals#index"
 

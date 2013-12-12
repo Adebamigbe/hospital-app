@@ -1,21 +1,10 @@
-%h1 Listing hospital_suggestions
+%h1 Suggest Specialisation
 
-%table
-  %tr
-    %th User
-    %th Hospital
-    %th
-    %th
-    %th
+= form_tag("/hospitals/#{params[:hospital_id]}/hospital_suggestions", id: :specialisations_form)
+- @specialisation_categories_hash.each do |key, value|
+  %h4= key.name
 
-  - @hospital_suggestions.each do |hospital_suggestion|
-    %tr
-      %td= hospital_suggestion.user_id
-      %td= hospital_suggestion.hospital_id
-      %td= link_to 'Show', hospital_suggestion
-      %td= link_to 'Edit', edit_hospital_suggestion_path(hospital_suggestion)
-      %td= link_to 'Destroy', hospital_suggestion, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Hospital suggestion', new_hospital_suggestion_path
+  - value.each do |specialisation|
+    %input{type: :checkbox, name: "specialisations_id[]", value: specialisation.id, checked: specialisation.show_checked ? :checked : nil}= specialisation.name
+    %br
+%input{type: :submit, value: :Send}
