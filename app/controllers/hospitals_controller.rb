@@ -2,6 +2,7 @@ class HospitalsController < ApplicationController
   # GET /hospitals
   # GET /hospitals.json
   def index
+    @specialisation_categories = [["All Specialisations", 0]] + SpecialisationCategory.all.collect {|c| [c.name, c.id]}
   end
 
   # GET /hospitals/1

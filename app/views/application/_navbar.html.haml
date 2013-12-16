@@ -5,4 +5,7 @@
   = form_tag("/hospitals/search", id: "search-form", class: "navbar-form navbar-left") do
     .form-group
       = text_field_tag :search, nil, class: "form-control", placeholder: :Search
+    .form-group
+      = select_tag(:specialisation_category_id, options_for_select(@specialisation_categories))
+      = select_tag(:specialisation_id)
     = submit_tag :Search, class: "btn btn-default"

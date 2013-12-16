@@ -2,6 +2,7 @@ class SpecialisationsController < ApplicationController
   # GET /specialisations
   # GET /specialisations.json
   def index
+    render json: SpecialisationCategory.find(params[:specialisation_category_id]).specialisations
   end
 
   # GET /specialisations/1
