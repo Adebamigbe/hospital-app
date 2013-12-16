@@ -49,11 +49,16 @@ class HospitalSuggestionsController < ApplicationController
   # POST /hospital_suggestions.json
   def create
     hospital = Hospital.find(params[:hospital_id])
+    hospital_suggestion = HospitalSuggestion.new
+    hospital_suggestion.hospital = hospital
+    # hospital_suggestion.user = current_user
+    hospital_suggestion.save
 
     params[:specialisations_id].each do |specialisation_id|
       specialisation = Specialisation.find(specialisation_id)
-      hospital.specialisations << specialisation unless hospital.specialisations.include? specialisation
+      hospital_suggestion.specialisations << specialisation unless hospital.specialisations.include? specialisation
     end
+
 
     redirect_to(hospital)
   end
