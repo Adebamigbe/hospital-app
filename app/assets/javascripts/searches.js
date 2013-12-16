@@ -36,18 +36,20 @@ $(function() {
         //create empty LatLngBounds object
         var bounds = new google.maps.LatLngBounds();
 
+        removeMarkers();
+
         for (element in results) {
           var result = results[element];
-          console.log(result);
+
           var lat = result.geometry.location.lat;
           var lng = result.geometry.location.lng;
-
           var latlng = new google.maps.LatLng(lat, lng);
 
           var marker = new google.maps.Marker({
               position: latlng,
               map: window.map,
               title: result.name,
+              icon: result.matches_specialisation ? "/assets/green-dot.png" : ""  ,
               vicinity: result.vicinity,
               app_id: result.app_id,
               matches_specialisation: result.matches_specialisation
@@ -55,6 +57,8 @@ $(function() {
 
           //extend the bounds to include each marker's position
           bounds.extend(marker.position);
+
+          window.markers.push(marker);
 
           var infowindow = new google.maps.InfoWindow({
             height: 500
@@ -71,21 +75,9 @@ $(function() {
             $elementVicinity.html(this.vicinity);
             $infowindowContent.append($elementName).append($elementVicinity);
 
-            // if (this.matches_specialisation) {
-            // }
-
             infowindow.setContent($infowindowContent.html());
-
             map.setCenter(this.getPosition());
           });
-
-          // var iconBase = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png/';
-          // var icons = {
-          //   hospitals: {
-          //     icon: iconBase + 'green-dot.png'
-          //   }
-          // };
-
 
           map.fitBounds(bounds);
         }

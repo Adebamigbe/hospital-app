@@ -78,6 +78,7 @@ class HospitalsController < ApplicationController
 
   # POST /hospitals/search
   def search
+    specialisation = Specialisation.where(id: params[:specialisation_id]).first
     address = params[:search]
     geo = Geocoder.search(address).first
     location = geo.geometry["location"]
@@ -85,16 +86,23 @@ class HospitalsController < ApplicationController
     lng = location["lng"]
 
     search = Search.create(address: address, lat: lat, lng: lng)
-
     results = SearchHelper.search(lat, lng)
+
     results.each do |hospital_result|
-      hospital = Hospital.new
-      hospital.name = hospital_result["name"]
-      hospital.api_id = hospital_result["id"]
-      hospital.address = hospital_result["vicinity"]
-      hospital.lat = hospital_result["geometry"]["location"]["lat"]
-      hospital.lng = hospital_result["geometry"]["location"]["lng"]
-      hospital.save
+      hospital = Hospital.where(api_id: hospital_result["id"]).first
+
+      if hospital.nil?
+        hospital = Hospital.new
+        hospital.name = hospital_result["name"]
+        hospital.api_id = hospital_result["id"]
+        hospital.address = hospital_result["vicinity"]
+        hospital.lat = hospital_result["geometry"]["location"]["lat"]
+        hospital.lng = hospital_result["geometry"]["location"]["lng"]
+        hospital.save
+      end
+
+      matches_specialisation = hospital.specialisations.include?(specialisation) unless specialisation.nil?
+      hospital_result["matches_specialisation"] = matches_specialisation
 
       hospital_result["app_id"] = hospital.id
     end
