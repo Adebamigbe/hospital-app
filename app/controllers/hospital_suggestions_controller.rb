@@ -1,8 +1,16 @@
+require "json"
+
 class HospitalSuggestionsController < ApplicationController
   # GET /hospital_suggestions
   # GET /hospital_suggestions.json
   def index
+    hospital = Hospital.find(params[:hospital_id])
+    hospital_suggestions = hospital.hospital_suggestions.where(active: true)
 
+    @hospital_suggestions_with_specialisations = {}
+    hospital_suggestions.each do |hospital_suggestion|
+      @hospital_suggestions_with_specialisations[hospital_suggestion] = hospital_suggestion.specialisations
+    end
   end
 
   # GET /hospital_suggestions/1
@@ -84,5 +92,29 @@ class HospitalSuggestionsController < ApplicationController
       format.html { redirect_to hospital_suggestions_url }
       format.json { head :no_content }
     end
+  end
+
+  def approve
+    hospital = Hospital.find(params[:hospital_id])
+    hospital_suggestion = HospitalSuggestion.find(params[:hospital_suggestion_id])
+
+    hospital_suggestion.specialisations.each do |specialisation|
+      hospital.specialisations << specialisation unless hospital.specialisations.include? specialisation
+    end
+
+    hospital_suggestion.active = false
+    hospital_suggestion.status = "Approved"
+    hospital_suggestion.save
+
+    render json: {status: :approved}.to_json
+  end
+
+  def deny
+    hospital_suggestion = HospitalSuggestion.find(params[:hospital_suggestion_id])
+    hospital_suggestion.active = false
+    hospital_suggestion.status = "Denied"
+    hospital_suggestion.save
+
+    render json: {status: :denied}.to_json
   end
 end

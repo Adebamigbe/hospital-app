@@ -8,7 +8,10 @@ HospitalApp::Application.routes.draw do
   post "/hospitals/search", to: "hospitals#search"
 
   resources :hospitals do
-    resources :hospital_suggestions
+    resources :hospital_suggestions do
+      post "/approve", to: "hospital_suggestions#approve"
+      post "/deny", to: "hospital_suggestions#deny"
+    end
   end
 
   resources :users

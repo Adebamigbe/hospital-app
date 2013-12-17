@@ -1,0 +1,29 @@
+%h2 Suggestions
+- @hospital_suggestions_with_specialisations.each do |hospital_suggestion, specialisations|
+  .suggestion
+    %h3 Suggestion
+    %ul
+    - specialisations.each do |specialisation|
+      %li= specialisation.name
+    %button.approve{"data-action" => :approve, "data-hospital-suggestion-id" => hospital_suggestion.id, "data-hospital-id" => hospital_suggestion.hospital_id} Approve
+    %button.deny{"data-action" => :deny, "data-hospital-suggestion-id" => hospital_suggestion.id, "data-hospital-id" => hospital_suggestion.hospital_id} Deny
+
+
+:javascript
+  $(function() {
+    $(".approve, .deny").click(function() {
+      var $this = $(this);
+      var hospitalId = $this.data("hospital-id");
+      var hospitalSuggestionId = $this.data("hospital-suggestion-id");
+      var action = $this.data("action");
+
+      $.ajax({
+        url: "/hospitals/" + hospitalId + "/hospital_suggestions/" + hospitalSuggestionId + "/" + action,
+        type: "POST",
+        dataType: "json",
+        success: function(data) {
+          location.reload();
+        }
+      });
+    });
+  });
