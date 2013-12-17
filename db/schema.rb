@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(:version => 20131210150736) do
   create_table "hospital_suggestions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "hospital_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "active",      :default => true
+    t.string   "status",      :default => "Pending"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "hospital_suggestions_specialisations", :id => false, :force => true do |t|
