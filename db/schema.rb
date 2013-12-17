@@ -75,10 +75,11 @@ ActiveRecord::Schema.define(:version => 20131210150736) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest"
     t.date     "dob"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "role",            :default => "normal"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
 end

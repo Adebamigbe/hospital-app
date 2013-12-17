@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create!({first_name: :Admin, last_name: :Administrator, email: "admin@admin.com", password: 1234, role: "admin"})
+User.create!({first_name: :Bob, last_name: :Bobby, email: "bob@bob.com", password: 1234})
+
 ["Internal Medicine", "Imaging and X-ray Centre", "Specialist Surgery", "Health Screening", "Obstetrics and Gynaecology", "Paediatrics", "General Surgery", "Dental Surgery", "Intensive Coronary Care", "Modular Operating Theatre", "Physiotherapy", " Eye", "Pharmacy", "Accident and emergency (A&E)"].each do |category_name|
   category = SpecialisationCategory.new
   category.name = category_name

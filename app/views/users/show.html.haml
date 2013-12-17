@@ -10,15 +10,28 @@
   %b Email:
   = @user.email
 %p
-  %b Password:
-  = @user.password
-%p
   %b Dob:
   = @user.dob
-%p
-  %b User:
-  = @user.user_id
 
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+
+%p
+- if can? :update, @user
+  = link_to "Add a User", new_user_path
+  \|
+- if can? :update, @user
+  = link_to "Edit User", edit_user_path(@user)
+  \|
+- if can? :update, @user
+  = link_to "Update a User", user_path(@user)
+  \|
+- if can? :destroy, @user
+  = link_to "Destroy a User", new_user_path
+  \|
+- if can? :create, User
+  = link_to "Create a User", new_user_path
+  \|
+- if can? :destroy, @user
+  = link_to "Remove User", @user, :confirm => 'Are you sure?', :method => :delete
+
+
+

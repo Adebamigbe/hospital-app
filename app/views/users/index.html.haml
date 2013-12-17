@@ -1,29 +1,22 @@
-%h1 Listing users
 
-%table
-  %tr
-    %th First name
-    %th Last name
-    %th Email
-    %th Password
-    %th Dob
-    %th User
-    %th
-    %th
-    %th
+%h1 Hospital App User
+- if can? :create, User
+  = link_to "New User", new_user_path
 
-  - @users.each do |user|
-    %tr
-      %td= user.first_name
-      %td= user.last_name
-      %td= user.email
-      %td= user.password
-      %td= user.dob
-      %td= user.user_id
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+- if can? :manage, User
+  = link_to('Suggestions',  hospital_hospital_suggestions_path)
 
-= link_to 'New User', new_user_path
+
+- for user in @users
+
+
+  %p First Name:
+  = user.first_name
+
+  %p Last Name:
+  = user.last_name
+
+  %p Email:
+  = user.email
+  %hr
