@@ -9,3 +9,11 @@
       = select_tag(:specialisation_category_id, options_for_select(@specialisation_categories))
       = select_tag(:specialisation_id)
     = submit_tag :Search, class: "btn btn-default"
+  - if current_user
+    %p
+      hello, #{current_user.first_name}
+      = link_to 'Logout', logout_path, method: :delete, data: {confirm:"Are you sure?"}
+  - else
+    = link_to 'Please login', login_path
+    or
+    = link_to 'Please Signup', signup_path
