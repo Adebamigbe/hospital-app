@@ -2,20 +2,7 @@ class HospitalSuggestionsController < ApplicationController
   # GET /hospital_suggestions
   # GET /hospital_suggestions.json
   def index
-    hospital = Hospital.find(params[:hospital_id])
-    hospital_specialisations = hospital.specialisations
 
-    specialisation_categories = SpecialisationCategory.all
-    @specialisation_categories_hash = {}
-
-    specialisation_categories.each do |specialisation_category|
-      @specialisation_categories_hash[specialisation_category] = []
-
-      specialisation_category.specialisations.each do |specialisation|
-        specialisation.show_checked = true if hospital_specialisations.include? specialisation
-        @specialisation_categories_hash[specialisation_category] << specialisation
-      end
-    end
   end
 
   # GET /hospital_suggestions/1
@@ -32,11 +19,19 @@ class HospitalSuggestionsController < ApplicationController
   # GET /hospital_suggestions/new
   # GET /hospital_suggestions/new.json
   def new
-    @hospital_suggestion = HospitalSuggestion.new
+    hospital = Hospital.find(params[:hospital_id])
+    hospital_specialisations = hospital.specialisations
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @hospital_suggestion }
+    specialisation_categories = SpecialisationCategory.all
+    @specialisation_categories_hash = {}
+
+    specialisation_categories.each do |specialisation_category|
+      @specialisation_categories_hash[specialisation_category] = []
+
+      specialisation_category.specialisations.each do |specialisation|
+        specialisation.show_checked = true if hospital_specialisations.include? specialisation
+        @specialisation_categories_hash[specialisation_category] << specialisation
+      end
     end
   end
 

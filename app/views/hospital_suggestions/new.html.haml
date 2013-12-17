@@ -1,5 +1,10 @@
-%h1 New hospital_suggestion
+%h1 Suggest Specialisation
 
-= render 'form'
+= form_tag("/hospitals/#{params[:hospital_id]}/hospital_suggestions", id: :specialisations_form)
+- @specialisation_categories_hash.each do |key, value|
+  %h4= key.name
 
-= link_to 'Back', hospital_suggestions_path
+  - value.each do |specialisation|
+    %input{type: :checkbox, name: "specialisations_id[]", value: specialisation.id, checked: specialisation.show_checked ? :checked : nil}= specialisation.name
+    %br
+%input{type: :submit, value: :Send}
