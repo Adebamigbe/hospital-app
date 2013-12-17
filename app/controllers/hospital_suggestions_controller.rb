@@ -55,13 +55,15 @@ class HospitalSuggestionsController < ApplicationController
     hospital_suggestion = HospitalSuggestion.new
     hospital_suggestion.hospital = hospital
     # hospital_suggestion.user = current_user
-    hospital_suggestion.save
 
     params[:specialisations_id].each do |specialisation_id|
       specialisation = Specialisation.find(specialisation_id)
       hospital_suggestion.specialisations << specialisation unless hospital.specialisations.include? specialisation
     end
 
+    if not hospital_suggestion.specialisations.empty?
+      hospital_suggestion.save
+    end
 
     redirect_to(hospital)
   end
