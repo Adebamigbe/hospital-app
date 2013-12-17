@@ -9,14 +9,15 @@
 
 
 - for user in @users
+  %p
+    First Name:
+    = link_to user.first_name, user
 
+  %p
+    Last Name:
+    = user.last_name
 
-  %p First Name:
-  = user.first_name
-
-  %p Last Name:
-  = user.last_name
-
-  %p Email:
-  = user.email
+  %p
+    Email:
+    = user.email
   %hr
