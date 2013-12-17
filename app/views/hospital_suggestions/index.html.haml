@@ -8,6 +8,8 @@
     %button.approve{"data-action" => :approve, "data-hospital-suggestion-id" => hospital_suggestion.id, "data-hospital-id" => hospital_suggestion.hospital_id} Approve
     %button.deny{"data-action" => :deny, "data-hospital-suggestion-id" => hospital_suggestion.id, "data-hospital-id" => hospital_suggestion.hospital_id} Deny
 
+= link_to :Back, @hospital
+
 
 :javascript
   $(function() {

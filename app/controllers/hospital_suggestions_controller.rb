@@ -4,8 +4,8 @@ class HospitalSuggestionsController < ApplicationController
   # GET /hospital_suggestions
   # GET /hospital_suggestions.json
   def index
-    hospital = Hospital.find(params[:hospital_id])
-    hospital_suggestions = hospital.hospital_suggestions.where(active: true)
+    @hospital = Hospital.find(params[:hospital_id])
+    hospital_suggestions = @hospital.hospital_suggestions.where(active: true)
 
     @hospital_suggestions_with_specialisations = {}
     hospital_suggestions.each do |hospital_suggestion|
@@ -27,8 +27,8 @@ class HospitalSuggestionsController < ApplicationController
   # GET /hospital_suggestions/new
   # GET /hospital_suggestions/new.json
   def new
-    hospital = Hospital.find(params[:hospital_id])
-    hospital_specialisations = hospital.specialisations
+    @hospital = Hospital.find(params[:hospital_id])
+    hospital_specialisations = @hospital.specialisations
 
     specialisation_categories = SpecialisationCategory.all
     @specialisation_categories_hash = {}

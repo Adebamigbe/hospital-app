@@ -8,3 +8,4 @@
     %input{type: :checkbox, name: "specialisations_id[]", value: specialisation.id, checked: specialisation.show_checked ? :checked : nil}= specialisation.name
     %br
 %input{type: :submit, value: :Send}
+= link_to :Back, @hospital
