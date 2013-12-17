@@ -14,7 +14,9 @@
   = specialisation.name
   %br
 
-= link_to 'Suggest Specialisations', hospital_hospital_suggestions_path(@hospital)
+= link_to 'Suggest Specialisations', new_hospital_hospital_suggestion_path(@hospital)
+\|
+= link_to 'Suggestions', hospital_hospital_suggestions_path(@hospital)
 \|
 = link_to 'Edit', edit_hospital_path(@hospital)
 \|
