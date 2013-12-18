@@ -1,9 +1,16 @@
-%h1 Login
-= form_tag sessions_path do
-  .field
-    = label_tag :email
-    = text_field_tag :email
-  .field
-    = label_tag :password
-    = password_field_tag :password
-  .actions= submit_tag "Log in"
+= form_tag sessions_path, class: "form-horizontal" do
+  .form-group
+    .col-sm-offset-2.col-sm-2
+      %h1 Login
+  .form-group
+    = label_tag :email, nil, class: "col-sm-2 control-label"
+    .col-sm-2
+      = text_field_tag :email, nil, class: "form-control"
+  .form-group
+    = label_tag :password, nil, class: "col-sm-2 control-label"
+    .col-sm-2
+      = password_field_tag :password, nil, class: "form-control"
+  .form-group
+    .col-sm-offset-2.col-sm-2
+      = submit_tag "Log in", class: "btn btn-default"
+      = link_to 'Back', root_path, class: "btn btn-default"
