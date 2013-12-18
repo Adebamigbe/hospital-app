@@ -14,10 +14,13 @@
   = specialisation.name
   %br
 
-= link_to 'Suggest Specialisations', new_hospital_hospital_suggestion_path(@hospital)
-\|
-= link_to 'Suggestions', hospital_hospital_suggestions_path(@hospital)
-\|
-= link_to 'Edit', edit_hospital_path(@hospital)
-\|
+- if can? :create, HospitalSuggestion
+  = link_to 'Suggest Specialisations', new_hospital_hospital_suggestion_path(@hospital)
+  \|
+- if can? :read, HospitalSuggestion
+  = link_to 'Suggestions', hospital_hospital_suggestions_path(@hospital)
+  \|
+- if can? :edit, Hospital
+  = link_to 'Edit', edit_hospital_path(@hospital)
+  \|
 = link_to 'Back', hospitals_path

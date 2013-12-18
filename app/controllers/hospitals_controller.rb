@@ -1,4 +1,7 @@
 class HospitalsController < ApplicationController
+
+  load_and_authorize_resource
+
   # GET /hospitals
   # GET /hospitals.json
   def index
@@ -78,6 +81,7 @@ class HospitalsController < ApplicationController
 
   # POST /hospitals/search
   def search
+
     specialisation = Specialisation.where(id: params[:specialisation_id]).first
     address = params[:search]
     geo = Geocoder.search(address).first
@@ -90,6 +94,7 @@ class HospitalsController < ApplicationController
 
     results.each do |hospital_result|
       hospital = Hospital.where(api_id: hospital_result["id"]).first
+      authorize! :search, hospital
 
       if hospital.nil?
         hospital = Hospital.new

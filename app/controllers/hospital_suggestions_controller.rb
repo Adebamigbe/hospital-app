@@ -1,6 +1,9 @@
 require "json"
 
 class HospitalSuggestionsController < ApplicationController
+
+  load_and_authorize_resource
+
   # GET /hospital_suggestions
   # GET /hospital_suggestions.json
   def index
