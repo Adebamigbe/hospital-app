@@ -10,7 +10,9 @@ class Ability
     else
       if user.role? :admin
         can :manage, :all
+        can :read, :all_suggestions
       elsif user.role? :normal
+        can :search, Hospital
         can :read, Hospital
         can :create, HospitalSuggestion
       end

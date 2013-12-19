@@ -1,23 +1,22 @@
+.user-page
+  %body
+  %h1 Hospital App User
+  - if can? :create, User
+    = link_to "New User", new_user_path
 
-%h1 Hospital App User
-- if can? :create, User
-  = link_to "New User", new_user_path
+  - for user in @users do
+    %p
+      First Name:
+      = link_to user.first_name, user
 
+    %p
+      Last Name:
+      = user.last_name
 
-- if can? :manage, User
-  = link_to('Suggestions',  hospital_hospital_suggestions_path)
+    %p
+      Email:
+      = user.email
+    %hr
 
-
-- for user in @users
-  %p
-    First Name:
-    = link_to user.first_name, user
-
-  %p
-    Last Name:
-    = user.last_name
-
-  %p
-    Email:
-    = user.email
-  %hr
+  %br
+  %button= link_to :Back, root_path

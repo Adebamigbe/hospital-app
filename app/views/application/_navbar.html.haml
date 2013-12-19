@@ -1,7 +1,11 @@
+%body
 .navbar.navbar-default
   .navbar-brand.strong= link_to "Hospital locator", root_path
   %ul.nav.navbar-nav.navbar-left
-    %li= link_to "Hospitals", hospitals_path
+    / .navbar-brand.strong= link_to "Hospitals", hospitals_path
+    - if can? :read, :all_suggestions
+      .navbar-brand.strong= link_to "Suggestions", hospital_suggestions_path
+      .navbar-brand.strong= link_to "Users", users_path
   = form_tag("/hospitals/search", id: "search-form", class: "navbar-form navbar-left") do
     .form-group
       = text_field_tag :search, nil, class: "form-control", placeholder: :Search
@@ -13,7 +17,13 @@
     %p
       hello, #{current_user.first_name}
       = link_to 'Logout', logout_path, method: :delete, data: {confirm:"Are you sure?"}
+
   - else
-    = link_to 'Please login', login_path
-    or
-    = link_to 'Please Signup', signup_path
+    .navbar-brand.strong= link_to 'Please login', login_path
+
+    .navbar-brand.strong= link_to 'Please Signup', signup_path
+
+
+
+
+

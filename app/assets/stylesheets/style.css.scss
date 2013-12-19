@@ -1,0 +1,118 @@
+
+body {
+  margin:0;
+  padding:0;
+}
+
+.login-page {
+  height: 100%;
+  background: url('mountains_and_lake.jpg') no-repeat center center;
+}
+
+.suggestions{
+  height: 100%;
+  background: url('world_is_yours.jpg') no-repeat center center;
+}
+
+.hospital-page{
+  height: 100%;
+  background: url('winter_morning.jpg') no-repeat center center;
+}
+
+.signup-page{
+  height: 100%;
+  background: url('fall_apples.jpg') no-repeat center center;
+}
+
+.user-page{
+  height: 100%;
+  background: url('winter_morning.jpg') no-repeat center center;
+}
+
+.slogan{
+  position: fixed;
+  text-align: center;
+  bottom: 10px;
+  width:100%;
+  font-size: 150px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.col-sm-offset-2.col-sm-2{
+  color: #000080;
+  font-size: 20px;
+}
+
+.form-group{
+  color: #000080;
+  font-size: 20px;
+}
+
+.navbar-brand.strong{
+  font-family: serif;
+  font-color: red;
+  font-size: 35px;
+}
+
+
+
+nav {
+  margin: 20px;
+
+  .form-group {
+    padding-top: 30px;
+  }
+
+  .approve {
+    padding-top: 30px;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      display: inline;
+      margin: 20px;
+      font-size: 30px;
+    }
+  }
+
+  h1, ul {
+    display: inline-block;
+    line-height: 80px;
+    height: 80px;
+  }
+}
+
+.container_12 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+#main {
+  margin: 40px;
+}
+
+.log {
+  float: right;
+
+  li {
+    margin: 0;
+  }
+
+  p {
+    font-size: 22px;
+  }
+}
+
+label {display:block;}
+
+.left {float:left;}
+
+.logo {
+  color: #333;
+  font-size: 43px;
+}
+

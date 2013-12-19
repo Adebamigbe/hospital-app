@@ -1,32 +1,37 @@
-= form_for @user, html: {class: "form-horizontal"} do |f|
-  .form-group
-    .col-sm-offset-2.col-sm-2
-      %h1 Sign Up
-  .form-group
-    = f.label :first_name, class: "col-sm-2 control-label"
-    .col-sm-2
-      = f.text_field :first_name, class: "form-control"
-  .form-group
-    = f.label :last_name, class: "col-sm-2 control-label"
-    .col-sm-2
-      = f.text_field :last_name, class: "form-control"
-  .form-group
-    = f.label :email, class: "col-sm-2 control-label"
-    .col-sm-2
-      = f.text_field :email, class: "form-control"
-  .form-group
-    = f.label :dob, class: "col-sm-2 control-label"
-    .col-sm-2
-      = f.date_select :dob, class: "form-control"
-  .form-group
-    = f.label :password, class: "col-sm-2 control-label"
-    .col-sm-2
-      = f.password_field :password, class: "form-control"
-  .form-group
-    = f.label :password_confirmation, "Confirmation", class: "col-sm-2 control-label"
-    .col-sm-2
-      = f.password_field :password_confirmation, class: "form-control"
-  .form-group
-    .col-sm-offset-2.col-sm-2
-      = f.submit 'Sign up', class: "btn btn-default"
-      = link_to 'Back', root_path, class: "btn btn-default"
+.signup-page
+  = form_for @user, html: {class: "form-horizontal"} do |f|
+    .form-group
+      .col-sm-offset-2.col-sm-2
+        %h1 Sign Up
+    .form-group
+      = f.label :first_name, class: "col-sm-2 control-label"
+      .col-sm-2
+        = f.text_field :first_name, class: "form-control"
+    .form-group
+      = f.label :last_name, class: "col-sm-2 control-label"
+      .col-sm-2
+        = f.text_field :last_name, class: "form-control"
+    .form-group
+      = f.label :email, class: "col-sm-2 control-label"
+      .col-sm-2
+        = f.text_field :email, class: "form-control"
+    .form-group
+      = f.label :dob, class: "col-sm-2 control-label"
+      .col-sm-2
+        = f.date_select :dob, class: "form-control"
+    .form-group
+      = f.label :password, class: "col-sm-2 control-label"
+      .col-sm-2
+        = f.password_field :password, class: "form-control"
+    .form-group
+      = f.label :password_confirmation, "Confirmation", class: "col-sm-2 control-label"
+      .col-sm-2
+        = f.password_field :password_confirmation, class: "form-control"
+    .form-group
+      .col-sm-offset-2.col-sm-2
+        = f.submit 'Sign up', class: "btn btn-default"
+        = link_to 'Back', root_path, class: "btn btn-default"
+
+
+.slogan
+  %p An apple a day keep the doctor away

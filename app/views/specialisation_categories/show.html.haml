@@ -7,6 +7,7 @@
   %b Spec cat:
   = @specialisation_category.spec_cat_id
 
-= link_to 'Edit', edit_specialisation_category_path(@specialisation_category)
-\|
+- if can? :edit, Course
+  = link_to 'Edit', edit_specialisation_category_path(@specialisation_category)
+  \|
 = link_to 'Back', specialisation_categories_path

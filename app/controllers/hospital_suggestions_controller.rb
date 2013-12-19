@@ -16,6 +16,17 @@ class HospitalSuggestionsController < ApplicationController
     end
   end
 
+  def all
+    authorize! :all_suggestions, HospitalSuggestion.new
+
+    hospital_suggestions = HospitalSuggestion.where(active: true)
+
+    @hospital_suggestions_with_specialisations = {}
+    hospital_suggestions.each do |hospital_suggestion|
+      @hospital_suggestions_with_specialisations[hospital_suggestion] = hospital_suggestion.specialisations
+    end
+  end
+
   # GET /hospital_suggestions/1
   # GET /hospital_suggestions/1.json
   def show
@@ -57,7 +68,7 @@ class HospitalSuggestionsController < ApplicationController
     hospital = Hospital.find(params[:hospital_id])
     hospital_suggestion = HospitalSuggestion.new
     hospital_suggestion.hospital = hospital
-    # hospital_suggestion.user = current_user
+    hospital_suggestion.user = current_user
 
     params[:specialisations_id].each do |specialisation_id|
       specialisation = Specialisation.find(specialisation_id)
