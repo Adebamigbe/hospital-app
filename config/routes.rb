@@ -22,6 +22,8 @@ HospitalApp::Application.routes.draw do
   get "/login",  to: "sessions#new" ,     as: "login"
   delete "/logout", to: "sessions#destroy",  as: "logout"
   get "/hospital_suggestions", to: "hospital_suggestions#all"
+  get "/about", to: "application#about"
+  get "/contact", to: "application#contact"
 
   root to: "hospitals#index"
 

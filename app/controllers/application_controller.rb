@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def about
+  end
+
+  def contact
+  end
 end

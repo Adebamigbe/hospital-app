@@ -39,6 +39,11 @@ body {
   font-family: sans-serif;
 }
 
+.b{
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .col-sm-offset-2.col-sm-2{
   color: #000080;
   font-size: 20px;
@@ -52,67 +57,67 @@ body {
 .navbar-brand.strong{
   font-family: serif;
   font-color: red;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 
 
-nav {
-  margin: 20px;
+// nav {
+//   margin: 20px;
 
-  .form-group {
-    padding-top: 30px;
-  }
+//   .form-group {
+//     padding-top: 30px;
+//   }
 
-  .approve {
-    padding-top: 30px;
-  }
+//   .approve {
+//     padding-top: 30px;
+//   }
 
-  ul {
-    list-style: none;
+//   ul {
+//     list-style: none;
 
-    li {
-      display: inline;
-      margin: 20px;
-      font-size: 30px;
-    }
-  }
+//     li {
+//       display: inline;
+//       margin: 20px;
+//       font-size: 30px;
+//     }
+//   }
 
-  h1, ul {
-    display: inline-block;
-    line-height: 80px;
-    height: 80px;
-  }
-}
+//   h1, ul {
+//     display: inline-block;
+//     line-height: 80px;
+//     height: 80px;
+//   }
+// }
 
-.container_12 {
-  margin-left: auto;
-  margin-right: auto;
-  width: 960px;
-}
+// .container_12 {
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 960px;
+// }
 
-#main {
-  margin: 40px;
-}
+// #main {
+//   margin: 40px;
+// }
 
-.log {
-  float: right;
+// .log {
+//   float: right;
 
-  li {
-    margin: 0;
-  }
+//   li {
+//     margin: 0;
+//   }
 
-  p {
-    font-size: 22px;
-  }
-}
+//   p {
+//     font-size: 22px;
+//   }
+// }
 
-label {display:block;}
+// label {display:block;}
 
-.left {float:left;}
+// .left {float:left;}
 
-.logo {
-  color: #333;
-  font-size: 43px;
-}
+// .logo {
+//   color: #333;
+//   font-size: 43px;
+// }
 
