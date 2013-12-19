@@ -57,67 +57,65 @@ body {
 .navbar-brand.strong{
   font-family: serif;
   font-color: red;
-  font-size: 30px;
+  font-size: 32px;
 }
 
+nav {
+  margin: 20px;
 
+  .form-group {
+    padding-top: 30px;
+  }
 
-// nav {
-//   margin: 20px;
+  .approve {
+    padding-top: 30px;
+  }
 
-//   .form-group {
-//     padding-top: 30px;
-//   }
+  ul {
+    list-style: none;
 
-//   .approve {
-//     padding-top: 30px;
-//   }
+    li {
+      display: inline;
+      margin: 20px;
+      font-size: 30px;
+    }
+  }
 
-//   ul {
-//     list-style: none;
+  h1, ul {
+    display: inline-block;
+    line-height: 80px;
+    height: 80px;
+  }
+}
 
-//     li {
-//       display: inline;
-//       margin: 20px;
-//       font-size: 30px;
-//     }
-//   }
+.container_12 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
 
-//   h1, ul {
-//     display: inline-block;
-//     line-height: 80px;
-//     height: 80px;
-//   }
-// }
+#main {
+  margin: 40px;
+}
 
-// .container_12 {
-//   margin-left: auto;
-//   margin-right: auto;
-//   width: 960px;
-// }
+.log {
+  float: right;
 
-// #main {
-//   margin: 40px;
-// }
+  li {
+    margin: 0;
+  }
 
-// .log {
-//   float: right;
+  p {
+    font-size: 22px;
+  }
+}
 
-//   li {
-//     margin: 0;
-//   }
+label {display:block;}
 
-//   p {
-//     font-size: 22px;
-//   }
-// }
+.left {float:left;}
 
-// label {display:block;}
-
-// .left {float:left;}
-
-// .logo {
-//   color: #333;
-//   font-size: 43px;
-// }
+.logo {
+  color: #333;
+  font-size: 43px;
+}
 
