@@ -19,23 +19,10 @@
 
 
 %p
-- if can? :update, @user
-  = link_to "Add a User", new_user_path
-  \|
-- if can? :update, @user
-  = link_to "Edit User", edit_user_path(@user)
-  \|
-- if can? :update, @user
-  = link_to "Update a User", user_path(@user)
-  \|
-- if can? :destroy, @user
-  = link_to "Destroy a User", new_user_path
-  \|
-- if can? :create, User
-  = link_to "Create a User", new_user_path
-  \|
-- if can? :destroy, @user
-  = link_to "Remove User", @user, :confirm => 'Are you sure?', :method => :delete
+  - if can? :update, @user
+    = link_to "Edit User", edit_user_path(@user)
+    \|
+  - if can? :destroy, @user
+    = link_to "Remove User", @user, :confirm => 'Are you sure?', :method => :delete
 
-
-
+    %button= link_to 'Back', root_path
