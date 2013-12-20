@@ -15,7 +15,8 @@
     = submit_tag :Search, class: "btn btn-default"
   - if current_user
     %p
-      hello, #{current_user.first_name}
+      hello,
+      = link_to current_user.first_name, current_user
       = link_to 'Logout', logout_path, method: :delete, data: {confirm:"Are you sure?"}
   .navbar-brand.strong= link_to 'Please login', login_path
   .navbar-brand.strong= link_to 'Please Signup', signup_path
